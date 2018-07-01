@@ -12,9 +12,17 @@ const expiresIn = '2 days'
 const APP_KEY = process.env.APP_KEY
 
 export const getToken = data =>
-  jwt.sign(data, APP_KEY, { algorithm, expiresIn })
+  new Promise((resolve, reject) => {
+    jwt.sign(data, APP_KEY, { algorithm, expiresIn }, (err, token) => {
+      if (err) reject(err)
+      resolve(token)
+    })
+  })
 
 export const verifyToken = token =>
-  jwt.verify(token, APP_KEY, { algorithms: [algorithm] })
-
-export const decodeToken = token => jwt.decode(token)
+  new Promise((resolve, reject) => {
+    jwt.verify(token, APP_KEY, { algorithms: [algorithm] }, (err, decoded) => {
+      if (err) reject(err)
+      resolve(decoded)
+    })
+  })
