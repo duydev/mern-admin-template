@@ -1,4 +1,5 @@
 /* eslint-disable */
+import '@babel/polyfill'
 import 'db'
 import http from 'http'
 import app from './app'

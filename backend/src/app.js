@@ -19,7 +19,7 @@ app.use('/*', (req, res) => res.status(404).json({ error: 'API not found!' }))
 
 app.use((err, req, res, next) => {
   console.error(chalk.red(`API Error: ${err.stack}`))
-  res.status(500).json({ err: err.message })
+  res.status(500).json({ error: err.message })
 })
 
 export default app
