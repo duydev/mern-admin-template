@@ -1,0 +1,12 @@
+{
+  "presets": ["@babel/preset-env"],
+  "ignore": ["**/node_modules/*", "**/build/*"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"]
+      }
+    ]
+  ]
+}

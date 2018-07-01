@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+/* eslint-disable */
+require('dotenv').config()
+if (process.env.NODE_ENV === 'development') require('@babel/register')
+if (process.env.NODE_ENV === 'production') {
+  const fs = require('fs')
+  const chalk = require('chalk')
+  if (!fs.existsSync('./build')) {
+    console.error(
+      chalk.red('error Build folder does not exist. Please run build before.')
+    )
+    process.exit(1)
+  }
+}
+require('server')
