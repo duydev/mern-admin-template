@@ -24,10 +24,12 @@ const schema = new mongoose.Schema({
 })
 
 schema.set('toJSON', { getters: true, virtuals: false })
-schema.set('toObject', { getters: true })
+schema.set('toObject', { getters: true, virtuals: false })
 schema.plugin(timeStamp)
 
 schema.pre('save', async function(next) {
+  this.fullName = this.fullName.trim()
+  this.username = this.username.trim()
   this.password = await hashPwd(this.password)
   next()
 })
