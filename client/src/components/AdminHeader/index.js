@@ -11,8 +11,8 @@ const styles = {}
 
 const AdminHeader = () => {
   return (
-    <header>
-      <AppBar>
+    <div>
+      <AppBar position="static">
         <Toolbar>
           <IconButton color="inherit">
             <MenuIcon />
@@ -22,7 +22,7 @@ const AdminHeader = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-    </header>
+    </div>
   )
 }
 
