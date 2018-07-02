@@ -1,13 +1,17 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import NotFound from '../NotFound'
+import { PageNotFound, AdminHeader, AdminFooter } from '..'
 
 const Router = () => {
   return (
-    <Switch>
-      <Route component={NotFound} />
-    </Switch>
+    <div>
+      <AdminHeader />
+      <Switch>
+        <Route component={PageNotFound} />
+      </Switch>
+      <AdminFooter />
+    </div>
   )
 }
 
