@@ -17,3 +17,19 @@ export const authenticate = async (username, password) => {
     throw err
   }
 }
+
+export const getUsers = async (page = 1, limit = 10) => {
+  try {
+    const query = {}
+    const data = await User.paginate(query, {
+      select: '-__v -password',
+      lean: true,
+      leanWithId: true,
+      page,
+      limit
+    })
+    return data
+  } catch (err) {
+    throw err
+  }
+}

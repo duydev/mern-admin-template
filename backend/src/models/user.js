@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import timeStamp from 'mongoose-timestamp'
+import paginate from 'mongoose-paginate'
+
 import { hashPwd } from 'utils/hash'
 
 const schema = new mongoose.Schema({
@@ -26,6 +28,7 @@ const schema = new mongoose.Schema({
 schema.set('toJSON', { getters: true, virtuals: false })
 schema.set('toObject', { getters: true, virtuals: false })
 schema.plugin(timeStamp)
+schema.plugin(paginate)
 
 schema.pre('save', async function(next) {
   this.fullName = this.fullName.trim()
